@@ -15,16 +15,19 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // 1~100 까지의 총합=?
+        // 1. 클라이언트의 요청을 받는 작업(파라메타 수집) -> Controller(Servlet)
+        // 2. 처리하는 작업(비즈니스 로직) -> Model (java class)
         MyUtil my = new MyUtil();
         int sum = my.hap();
 
-        //요청한 클라이언트에게 응답하기?
+        // 3. 요청한 클라이언트에게 응답하는 작업 (프리젠테이션 로직) -> view (jsp)
         PrintWriter out = resp.getWriter();
         out.println("<html>");
         out.println("<body>");
         out.println(sum);
         out.println("</body>");
         out.println("</html>");
+
+        //Servlet 과 Model로 회원관리 만들기
     }
 }
